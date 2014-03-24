@@ -164,9 +164,11 @@ function ougc_agi_deactivate()
 // _is_installed() routine
 function ougc_agi_is_installed()
 {
-	global $settings;
+	global $cache;
 
-	return isset($settings['ougc_agi_groups']);
+	$plugins = (array)$cache->read('ougc_plugins');
+
+	return !empty($plugins['agi']);
 }
 
 // _uninstall() routine
