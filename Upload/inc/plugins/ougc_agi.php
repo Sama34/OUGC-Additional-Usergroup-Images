@@ -76,6 +76,9 @@ else
 	}
 }
 
+// PLUGINLIBRARY
+defined('PLUGINLIBRARY') or define('PLUGINLIBRARY', MYBB_ROOT.'inc/plugins/pluginlibrary.php');
+
 // Plugin API
 function ougc_agi_info()
 {
@@ -102,7 +105,7 @@ function ougc_agi_info()
 // _activate
 function ougc_agi_activate()
 {
-	global $PL, $lang, $cache;
+	global $PL/*, $lang*/, $cache;
 	ougc_agi_lang_load();
 	ougc_agi_deactivate();
 

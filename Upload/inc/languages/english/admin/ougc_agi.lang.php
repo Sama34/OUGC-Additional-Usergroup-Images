@@ -2,13 +2,13 @@
 
 /***************************************************************************
  *
- *   OUGC Additional Usergroup Images plugin
+ *   OUGC Additional Usergroup Images plugin (/inc/languages/english/admin/ougc_agi.php)
  *	 Author: Omar Gonzalez
- *   Copyright: © 2012 Omar Gonzalez
+ *   Copyright: Â© 2012-2014 Omar Gonzalez
  *   
  *   Website: http://omarg.me
  *
- *   This plugin will allow you to show additional usergroup images in profile and postbit.
+ *   Show additional usergroup images in profile and postbit.
  *
  ***************************************************************************
  
@@ -27,11 +27,14 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ****************************************************************************/
 
-$l['ougc_agi'] = 'OUGC Additional Usergroup Images';
-$l['ougc_agi_d'] = 'This plugin will allow you to show additional usergroup images in profile and postbit.';
-$l['ougc_agi_settints'] = 'OUGC Additional Usergroup Images Settings';
-$l['ougc_agi_settints_desc'] = 'Edit this feature settings from here.';
-$l['ougc_agi_power'] = 'Turn On/Off';
-$l['ougc_agi_power_desc'] = 'Deactivate without losing any data.';
-$l['ougc_agi_groups'] = 'Groups to Hide';
-$l['ougc_agi_groups_desc'] = 'Insert a comma separate list of groups to hide from the {$post[\'groupimage\']} variable.';
+// Plugin API
+$l['setting_group_ougc_agi'] = 'OUGC Additional Usergroup Images';
+$l['setting_group_ougc_agi_desc'] = 'Show additional usergroup images in profile and postbit.';
+
+// Settings
+/*$l['setting_ougc_agi_groups'] = 'Disallowed Groups';
+$l['setting_ougc_agi_groups_desc'] = 'Disallowed groups to process in this feature.';*/
+
+// PluginLibrary
+$l['ougc_agi_pl_required'] = 'This plugin requires <a href="{1}">PluginLibrary</a> version {2} or later to be uploaded to your forum.';
+$l['ougc_agi_pl_old'] = 'This plugin requires <a href="{1}">PluginLibrary</a> version {2} or later, whereas your current version is {3}.';
