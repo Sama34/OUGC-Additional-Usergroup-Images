@@ -11,10 +11,15 @@ Show additional usergroup images in profile and postbit.
 
 ### Installation
 1. Upload the content of the "upload" folder to your MyBB root folder.
-2. Go to ACP -> Configuration -> Plugins and activate the plugin.
-4. __Enjoy!__
+2. Go to ACP -> Configuration -> Plugins and activate/install the plugin.
+3. __Enjoy!__
 
 ### Update
+##### 1.1 to 1.1.x
+1. Deactivate plugin.
+2. Follow "Installation" instructions.
+3. Activate plugin.
+
 ##### 1.0 to 1.1
 1. Deactivate/Uninstall old plugin (plugin data will get lost).
 2. Follow "Installation" instructions.
