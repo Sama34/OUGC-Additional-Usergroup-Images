@@ -91,8 +91,8 @@ function ougc_agi_info()
 		'website'		=> 'http://mods.mybb.com/view/ougc-additional-usergroup-images',
 		'author'		=> 'Omar G.',
 		'authorsite'	=> 'http://omarg.me',
-		'version'		=> '1.1.1',
-		'versioncode'	=> 1110,
+		'version'		=> '1.1',
+		'versioncode'	=> 1100,
 		'compatibility'	=> '16*',
 		'guid' 			=> '652e62441b0b1dce6d7dc9fc4a7d35a0',
 		'pl'			=> array(
@@ -102,7 +102,7 @@ function ougc_agi_info()
 	);
 }
 
-// _activate() routine
+// _activate
 function ougc_agi_activate()
 {
 	global $PL/*, $lang*/, $cache;
@@ -152,7 +152,7 @@ function ougc_agi_activate()
 	$cache->update('ougc_plugins', $plugins);
 }
 
-// _deactivate() routine
+// _deactivate
 function ougc_agi_deactivate()
 {
 	ougc_agi_pl_check();
