@@ -32,8 +32,8 @@ $l['setting_group_ougc_agi'] = 'OUGC Additional Usergroup Images';
 $l['setting_group_ougc_agi_desc'] = 'Show additional usergroup images in profile and postbit.';
 
 // Settings
-/*$l['setting_ougc_agi_groups'] = 'Disallowed Groups';
-$l['setting_ougc_agi_groups_desc'] = 'Disallowed groups to process in this feature.';*/
+$l['setting_ougc_agi_groups'] = 'Disallowed Groups';
+$l['setting_ougc_agi_groups_desc'] = 'Disallowed groups to process in this feature.';
 
 // PluginLibrary
 $l['ougc_agi_pl_required'] = 'This plugin requires <a href="{1}">PluginLibrary</a> version {2} or later to be uploaded to your forum.';
