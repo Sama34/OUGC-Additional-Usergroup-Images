@@ -39,40 +39,43 @@ if(defined('IN_ADMINCP'))
 }
 else
 {
-	switch(THIS_SCRIPT)
+	if (defined(THIS_SCRIPT))
 	{
-		case 'showthread.php':
-		case 'private.php':
-		case 'newthread.php':
-		case 'newreply.php':
-		case 'editpost.php':
-		case 'announcements.php':
-		case 'member.php':
-			global $cache, $templatelist;
+		switch(THIS_SCRIPT)
+		{
+			case 'showthread.php':
+			case 'private.php':
+			case 'newthread.php':
+			case 'newreply.php':
+			case 'editpost.php':
+			case 'announcements.php':
+			case 'member.php':
+				global $cache, $templatelist;
 
-			$plugins->add_hook('postbit', 'ougc_agi_run');
-			$plugins->add_hook('postbit_pm', 'ougc_agi_run');
-			$plugins->add_hook('postbit_prev', 'ougc_agi_run');
-			$plugins->add_hook('postbit_announcement', 'ougc_agi_run');
-			$plugins->add_hook('member_profile_end', 'ougc_agi_run');
+				$plugins->add_hook('postbit', 'ougc_agi_run');
+				$plugins->add_hook('postbit_pm', 'ougc_agi_run');
+				$plugins->add_hook('postbit_prev', 'ougc_agi_run');
+				$plugins->add_hook('postbit_announcement', 'ougc_agi_run');
+				$plugins->add_hook('member_profile_end', 'ougc_agi_run');
 
-			if(!isset($templatelist))
-			{
-				$templatelist = '';
-			}
-			else
-			{
-				$templatelist .= ',';
-			}
+				if(!isset($templatelist))
+				{
+					$templatelist = '';
+				}
+				else
+				{
+					$templatelist .= ',';
+				}
 
-			$templatelist .= 'ougcagi';
+				$templatelist .= 'ougcagi';
 
-			$usergroups = $cache->read('usergroups');
-			foreach((array)$usergroups as $group)
-			{
-				$templatelist .= ',ougcagi_'.$group['gid'];
-			}
-			break;
+				$usergroups = $cache->read('usergroups');
+				foreach((array)$usergroups as $group)
+				{
+					$templatelist .= ',ougcagi_'.$group['gid'];
+				}
+				break;
+		}
 	}
 }
 
