@@ -2,7 +2,7 @@
 
 /***************************************************************************
  *
- *   OUGC Additional Usergroup Images plugin (/inc/languages/english/admin/ougc_agi.php)
+ *   OUGC Additional Usergroup Images plugin (/inc/languages/espanol/admin/ougc_agi.php)
  *	 Author: Omar Gonzalez
  *   Copyright: © 2012-2020 Omar Gonzalez
  *   
@@ -29,12 +29,12 @@
 
 // Plugin API
 $l['setting_group_ougc_agi'] = 'OUGC Additional Usergroup Images';
-$l['setting_group_ougc_agi_desc'] = 'Show additional usergroup images in profile and postbit.';
+$l['setting_group_ougc_agi_desc'] = 'Muestra las medallas adicionales en los perfiles y mensajes.';
 
 // Settings
-$l['setting_ougc_agi_groups'] = 'Disallowed Groups';
-$l['setting_ougc_agi_groups_desc'] = 'Disallowed groups to process in this feature.';
+$l['setting_ougc_agi_groups'] = 'Grupos Ignorados';
+$l['setting_ougc_agi_groups_desc'] = 'Grupos a los cuales no mostrar medallas adicionales.';
 
 // PluginLibrary
-$l['ougc_agi_pl_required'] = 'This plugin requires <a href="{1}">PluginLibrary</a> version {2} or later to be uploaded to your forum.';
-$l['ougc_agi_pl_old'] = 'This plugin requires <a href="{1}">PluginLibrary</a> version {2} or later, whereas your current version is {3}.';
+$l['ougc_agi_pl_required'] = 'Este plugin requiere <a href="{1}">PluginLibrary</a> version {2} para funcionar.';
+$l['ougc_agi_pl_old'] = $l['ougc_agi_pl_required'];

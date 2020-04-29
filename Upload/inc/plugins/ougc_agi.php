@@ -4,9 +4,9 @@
  *
  *   OUGC Additional Usergroup Images plugin (/inc/plugins/ougc_agi.php)
  *	 Author: Omar Gonzalez
- *   Copyright: © 2012-2014 Omar Gonzalez
+ *   Copyright: © 2012-2020 Omar Gonzalez
  *   
- *   Website: http://omarg.me
+ *   Website: https://ougc.network
  *
  *   Show additional usergroup images in profile and postbit.
  *
@@ -91,15 +91,15 @@ function ougc_agi_info()
 	return array(
 		'name'			=> 'OUGC Additional Usergroup Images',
 		'description'	=> $lang->setting_group_ougc_agi_desc,
-		'website'		=> 'http://omarg.me',
+		'website'		=> 'https://ougc.network',
 		'author'		=> 'Omar G.',
-		'authorsite'	=> 'http://omarg.me',
-		'version'		=> '1.8',
-		'versioncode'	=> 1800,
+		'authorsite'	=> 'https://ougc.network',
+		'version'		=> '1.8.21',
+		'versioncode'	=> 1821,
 		'compatibility'	=> '18*',
 		'pl'			=> array(
-			'version'	=> 12,
-			'url'		=> 'http://mods.mybb.com/view/pluginlibrary'
+			'version'	=> 13,
+			'url'		=> 'https://community.mybb.com/mods.php?action=view&pid=573'
 		)
 	);
 }

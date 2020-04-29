@@ -1,6 +1,0 @@
-1.0 => 1.1
-==============================
-	- Code optimization.
-	- PluginLibrary 12 is now required for the plugin to work.
-	- Enhancement: Language support for template set.
-	- Enhancement: Setting groups now removed for minimalists.
