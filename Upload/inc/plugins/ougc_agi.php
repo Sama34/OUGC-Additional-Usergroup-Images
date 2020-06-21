@@ -260,7 +260,8 @@ function ougc_agi_run(&$post)
 	$br_profile = '<br />';
 	$var = 'memprofile';
 	$postbit_tmpl = 'member_profile';
-	if(!empty($post))
+
+	if(THIS_SCRIPT != 'member.php')
 	{
 		if($mybb->settings['postlayout'] != 'classic')
 		{
