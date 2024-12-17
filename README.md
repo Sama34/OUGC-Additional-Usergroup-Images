@@ -6,7 +6,7 @@ Show additional usergroup images in profile and postbit.
 
 ### Support
 
-Please visit [OUGC Network](https://ougc.network/ "Visit OUGC Network") for more information about this project.
+Please visit [ougcNetwork](https://ougc.network/ "Visit ougcNetwork") for more information about this project.
 
 ### Thank You!
 
