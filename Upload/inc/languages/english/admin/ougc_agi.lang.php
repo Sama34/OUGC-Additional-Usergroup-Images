@@ -2,7 +2,7 @@
 
 /***************************************************************************
  *
- *   OUGC Additional Usergroup Images plugin (/inc/languages/english/admin/ougc_agi.php)
+ *   ougc Additional Usergroup Images plugin (/inc/languages/english/admin/ougc_agi.php)
  *     Author: Omar Gonzalez
  *   Copyright: © 2012-2020 Omar Gonzalez
  *
@@ -27,7 +27,7 @@
  ****************************************************************************/
 
 // Plugin API
-$l['setting_group_ougc_agi'] = 'OUGC Additional Usergroup Images';
+$l['setting_group_ougc_agi'] = 'ougc Additional Usergroup Images';
 $l['setting_group_ougc_agi_desc'] = 'Show additional usergroup images in profile and postbit.';
 
 // Settings
