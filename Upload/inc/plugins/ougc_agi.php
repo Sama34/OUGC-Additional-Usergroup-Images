@@ -85,8 +85,8 @@ function ougc_agi_info(): array
         'website' => 'https://ougc.network',
         'author' => 'Omar G.',
         'authorsite' => 'https://ougc.network',
-        'version' => '1.8.21',
-        'versioncode' => 1821,
+        'version' => '1.8.37',
+        'versioncode' => 1837,
         'compatibility' => '18*',
         'pl' => [
             'version' => 13,
