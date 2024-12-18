@@ -82,9 +82,10 @@ function ougc_agi_info(): array
         'website' => 'https://ougc.network',
         'author' => 'Omar G.',
         'authorsite' => 'https://ougc.network',
-        'version' => '1.8.37',
-        'versioncode' => 1837,
+        'version' => '1.8.38',
+        'versioncode' => 1838,
         'compatibility' => '18*',
+        'codename' => 'ougc_agi',
         'pl' => [
             'version' => 13,
             'url' => 'https://community.mybb.com/mods.php?action=view&pid=573'
