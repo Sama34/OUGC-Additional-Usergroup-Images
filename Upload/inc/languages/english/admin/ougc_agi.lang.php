@@ -3,12 +3,12 @@
 /***************************************************************************
  *
  *   ougc Additional Usergroup Images plugin (/inc/languages/english/admin/ougc_agi.php)
- *     Author: Omar Gonzalez
+ *   Author: Omar Gonzalez
  *   Copyright: © 2012-2020 Omar Gonzalez
  *
  *   Website: https://ougc.network
  *
- *   Show additional usergroup images in profile and postbit.
+ *   Show additional user group images in profiles and posts.
  *
  ***************************************************************************
  ****************************************************************************
@@ -28,11 +28,11 @@
 
 // Plugin API
 $l['setting_group_ougc_agi'] = 'ougc Additional Usergroup Images';
-$l['setting_group_ougc_agi_desc'] = 'Show additional usergroup images in profile and postbit.';
+$l['setting_group_ougc_agi_desc'] = 'Show additional user group images in profiles and posts.';
 
 // Settings
-$l['setting_ougc_agi_groups'] = 'Disallowed Groups';
-$l['setting_ougc_agi_groups_desc'] = 'Disallowed groups to process in this feature.';
+$l['setting_ougc_agi_groups'] = 'Ignored Groups';
+$l['setting_ougc_agi_groups_desc'] = 'Select the groups for which additional group image will not be generated.';
 
 // PluginLibrary
 $l['ougc_agi_pl_required'] = 'This plugin requires <a href="{1}">PluginLibrary</a> version {2} or later to be uploaded to your forum.';

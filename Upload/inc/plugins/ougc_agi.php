@@ -3,12 +3,12 @@
 /***************************************************************************
  *
  *   ougc Additional Usergroup Images plugin (/inc/plugins/ougc_agi.php)
- *     Author: Omar Gonzalez
+ *   Author: Omar Gonzalez
  *   Copyright: © 2012-2020 Omar Gonzalez
  *
  *   Website: https://ougc.network
  *
- *   Show additional usergroup images in profile and postbit.
+ *   Show additional user group images in profiles and posts.
  *
  ***************************************************************************
  ****************************************************************************
@@ -29,11 +29,10 @@
 declare(strict_types=1);
 
 // Die if IN_MYBB is not defined, for security reasons.
-defined('IN_MYBB') or die('This file cannot be accessed directly.');
+defined('IN_MYBB') || die('This file cannot be accessed directly.');
 
 global $plugins;
 
-// Run/Add Hooks
 if (defined('IN_ADMINCP')) {
     $plugins->add_hook('admin_config_settings_start', 'ougc_agi_lang_load');
     $plugins->add_hook('admin_style_templates_set', 'ougc_agi_lang_load');
@@ -66,14 +65,12 @@ if (defined('IN_ADMINCP')) {
             foreach ((array)$cache->read('usergroups') as $group) {
                 $templatelist .= ',ougcagi_' . $group['gid'];
             }
-            break;
     }
 }
 
 // PLUGINLIBRARY
-defined('PLUGINLIBRARY') or define('PLUGINLIBRARY', MYBB_ROOT . 'inc/plugins/pluginlibrary.php');
+defined('PLUGINLIBRARY') || define('PLUGINLIBRARY', MYBB_ROOT . 'inc/plugins/pluginlibrary.php');
 
-// Plugin API
 function ougc_agi_info(): array
 {
     global $lang;
@@ -95,14 +92,12 @@ function ougc_agi_info(): array
     ];
 }
 
-// _activate() routine
-function ougc_agi_activate()
+function ougc_agi_activate(): bool
 {
     global $PL, $lang, $cache;
-    ougc_agi_lang_load();
-    ougc_agi_deactivate();
 
-    // Add settings group
+    ougc_agi_lang_load();
+
     $PL->settings('ougc_agi', $lang->setting_group_ougc_agi, $lang->setting_group_ougc_agi_desc, [
         'groups' => [
             'title' => $lang->setting_ougc_agi_groups,
@@ -112,31 +107,13 @@ function ougc_agi_activate()
         ]
     ]);
 
-    // Add template group
     $PL->templates('ougcagi', 'ougc Additional Usergroup Images', [
         '' => '{$br_postbit}<img src="{$image}" alt="{$usertitle}" title="{$usertitle}" />{$br_profile}'
     ]);
 
-    // Modify templates
-    require_once MYBB_ROOT . 'inc/adminfunctions_templates.php';
-    find_replace_templatesets(
-        'postbit',
-        '#' . preg_quote('{$post[\'groupimage\']}') . '#',
-        '{$post[\'groupimage\']}{$post[\'ougc_agi\']}'
-    );
-    find_replace_templatesets(
-        'postbit_classic',
-        '#' . preg_quote('{$post[\'groupimage\']}') . '#',
-        '{$post[\'groupimage\']}{$post[\'ougc_agi\']}'
-    );
-    find_replace_templatesets(
-        'member_profile',
-        '#' . preg_quote('{$groupimage}') . '#',
-        '{$groupimage}{$memprofile[\'ougc_agi\']}'
-    );
-
     // Insert/update version into cache
     $plugins = $cache->read('ougc_plugins');
+
     if (!$plugins) {
         $plugins = [];
     }
@@ -152,23 +129,13 @@ function ougc_agi_activate()
     /*~*~* RUN UPDATES END *~*~*/
 
     $plugins['agi'] = $info['versioncode'];
+
     $cache->update('ougc_plugins', $plugins);
+
+    return true;
 }
 
-// _deactivate() routine
-function ougc_agi_deactivate()
-{
-    ougc_agi_pl_check();
-
-    // Revert template edits
-    require_once MYBB_ROOT . 'inc/adminfunctions_templates.php';
-    find_replace_templatesets('postbit', '#' . preg_quote('{$post[\'ougc_agi\']}') . '#', '', 0);
-    find_replace_templatesets('postbit_classic', '#' . preg_quote('{$post[\'ougc_agi\']}') . '#', '', 0);
-    find_replace_templatesets('member_profile', '#' . preg_quote('{$memprofile[\'ougc_agi\']}') . '#', '', 0);
-}
-
-// _is_installed() routine
-function ougc_agi_is_installed()
+function ougc_agi_is_installed(): bool
 {
     global $cache;
 
@@ -177,8 +144,7 @@ function ougc_agi_is_installed()
     return !empty($plugins['agi']);
 }
 
-// _uninstall() routine
-function ougc_agi_uninstall()
+function ougc_agi_uninstall(): bool
 {
     global $PL, $cache;
     ougc_agi_pl_check();
@@ -198,79 +164,83 @@ function ougc_agi_uninstall()
     } else {
         $PL->cache_delete('ougc_plugins');
     }
+
+    return true;
 }
 
-// Loads language strings
-function ougc_agi_lang_load()
+function ougc_agi_lang_load(): bool
 {
     global $lang;
 
-    isset($lang->setting_group_ougc_agi) or $lang->load('ougc_agi');
+    isset($lang->setting_group_ougc_agi) || $lang->load('ougc_agi');
+
+    return true;
 }
 
-// PluginLibrary dependency check & load
-function ougc_agi_pl_check()
+function ougc_agi_pl_check(): bool
 {
     global $lang;
+
     ougc_agi_lang_load();
+
     $info = ougc_agi_info();
 
     if (!file_exists(PLUGINLIBRARY)) {
         flash_message($lang->sprintf($lang->ougc_agi_pl_required, $info['pl']['url'], $info['pl']['version']), 'error');
+
         admin_redirect('index.php?module=config-plugins');
+
         exit;
     }
 
     global $PL;
 
-    $PL or require_once PLUGINLIBRARY;
+    $PL || require_once PLUGINLIBRARY;
 
     if ($PL->version < $info['pl']['version']) {
         flash_message(
             $lang->sprintf($lang->ougc_agi_pl_old, $info['pl']['url'], $info['pl']['version'], $PL->version),
             'error'
         );
+
         admin_redirect('index.php?module=config-plugins');
+
         exit;
     }
+
+    return true;
 }
 
-// Language support for settings
-function ougc_agi_settings_change()
+function ougc_agi_settings_change(): bool
 {
-    global $db, $mybb;
-
-    $query = $db->simple_select('settinggroups', 'name', 'gid=\'' . (int)$mybb->input['gid'] . '\'');
-    $groupname = $db->fetch_field($query, 'name');
-    if ($groupname == 'ougc_agi') {
-        global $plugins;
-        ougc_agi_lang_load();
-    }
+    return ougc_agi_lang_load();
 }
 
-// Show additional group images routine
 function ougc_agi_run(array &$post): array
 {
     global $mybb, $templates;
 
     $br_postbit = '';
+
     $br_profile = '<br />';
+
     $postbit_tmpl = 'member_profile';
 
     if (THIS_SCRIPT != 'member.php') {
         if ($mybb->settings['postlayout'] != 'classic') {
             $br_postbit = '<br />';
+
             $br_profile = '';
         }
 
         $postbit_tmpl = $mybb->settings['postlayout'] == 'classic' ? 'postbit_classic' : 'postbit';
     }
 
+    $post['ougc_agi'] = '';
+
     if (empty($post) || $mybb->settings['ougc_agi_groups'] == -1) {
         return $post;
     }
-
-    $post['ougc_agi'] = '';
 
     static $uidscache = [];
 
@@ -281,9 +251,9 @@ function ougc_agi_run(array &$post): array
 
         $uidscache[$post['uid']] = [];
 
-        foreach (array_map('intval', explode(',', $post['additionalgroups'])) as $val) {
-            if ($val !== (int)$post['usergroup']) {
-                $uidscache[$post['uid']][] = $val;
+        foreach (array_map('intval', explode(',', $post['additionalgroups'])) as $additional_group_id) {
+            if ($additional_group_id !== (int)$post['usergroup']) {
+                $uidscache[$post['uid']][] = $additional_group_id;
             }
         }
     }
@@ -301,7 +271,7 @@ function ougc_agi_run(array &$post): array
 
         $post['ougc_agi_' . $group] = '';
 
-        $displaygroup = $usergroups_cache[$group];
+        $displaygroup = $usergroups_cache[$group] ?? [];
 
         if (!empty($displaygroup['image'])) {
             $language = $mybb->settings['bblanguage'];
@@ -322,7 +292,10 @@ function ougc_agi_run(array &$post): array
 
             $tmpl = isset($templates->cache['ougcagi_' . $group]) ? 'ougcagi_' . $group : 'ougcagi';
 
-            if (my_strpos($templates->cache[$postbit_tmpl], "{\$post['ougc_agi_{$group}']}") !== false) {
+            if (
+                my_strpos($templates->cache[$postbit_tmpl], "{\$post['ougc_agi_{$group}']}") !== false ||
+                my_strpos($templates->cache[$postbit_tmpl], "{\$memprofile['ougc_agi_{$group}']}") !== false
+            ) {
                 $post["ougc_agi_{$group}"] = eval($templates->render($tmpl));
 
                 continue;

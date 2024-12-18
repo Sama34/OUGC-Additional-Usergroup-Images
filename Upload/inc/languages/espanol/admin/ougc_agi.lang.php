@@ -3,12 +3,12 @@
 /***************************************************************************
  *
  *   ougc Additional Usergroup Images plugin (/inc/languages/espanol/admin/ougc_agi.php)
- *     Author: Omar Gonzalez
+ *   Author: Omar Gonzalez
  *   Copyright: © 2012-2020 Omar Gonzalez
  *
  *   Website: https://ougc.network
  *
- *   Show additional usergroup images in profile and postbit.
+ *   Show additional user group images in profiles and posts.
  *
  ***************************************************************************
  ****************************************************************************
